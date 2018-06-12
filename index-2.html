@@ -1,0 +1,100 @@
+<html>
+<script>
+function callApiAdd(i){
+ //setTimeout(function() {
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+var data = JSON.stringify({
+  "peers": [
+    "a/peer0",
+    "b/peer0",
+    "b/peer1",
+    "c/peer0",
+    "c/peer1"
+  ],
+  "fcn": "addsecurity",
+  "args": [
+    "security"+i
+  ]
+});
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "http://ec2-13-229-154-124.ap-southeast-1.compute.amazonaws.com:4001/channels/common/chaincodes/reference");
+xhr.setRequestHeader("authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjY2NzE3NTEsInVzZXJuYW1lIjoidXNlcjEiLCJvcmdOYW1lIjoiYSIsImlhdCI6MTUyNjYzNTc1MX0.ov7ALlXBkBW3ZVzHvl5S_EodJxCOp_SAxg_nJzCQl3E");
+xhr.setRequestHeader("content-type", "application/json");
+
+xhr.send(data);
+//},10);
+}
+
+function callApiSub(i){
+// setTimeout(function() {
+ var data = JSON.stringify({
+  "peers": [
+    "b/peer0"
+  ],
+  "fcn": "subscribe",
+  "args": [
+    "security"+i
+  ]
+});
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "http://ec2-13-229-154-124.ap-southeast-1.compute.amazonaws.com:4001/channels/common/chaincodes/reference");
+xhr.setRequestHeader("authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjY2NzE3NTEsInVzZXJuYW1lIjoidXNlcjEiLCJvcmdOYW1lIjoiYSIsImlhdCI6MTUyNjYzNTc1MX0.ov7ALlXBkBW3ZVzHvl5S_EodJxCOp_SAxg_nJzCQl3E");
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.setRequestHeader("postman-token", "2a2b28ba-e5bb-2152-c99e-0a27324b37ff");
+
+xhr.send(data);
+//},10);
+}
+function callApiIssue(i){
+ //setTimeout(function() {
+ var data = JSON.stringify({
+  "peers": [
+    "a/peer0", "a/peer1"
+  ],
+  "fcn": "issueCa",
+  "args": ["security"+i,"<mx:CorpActnNtfctn> <mx:Id> <mx:Id>Request001</mx:Id> </mx:Id> <mx:NtfctnGnlInf> <mx:NtfctnTp>NEWM</mx:NtfctnTp> <mx:PrcgSts> <mx:EvtSts><mx:EvtCmpltnsSts>COMP</mx:EvtCmpltnsSts> <mx:EvtConfSts>CONF</mx:EvtConfSts> </mx:EvtSts> </mx:PrcgSts> </mx:NtfctnGnlInf> <mx:CorpActnGnlInf><mx:CorpActnEvtId>Disclosure001</mx:CorpActnEvtId> <mx:EvtTp> <mx:Cd>DSCL</mx:Cd> </mx:EvtTp> <mx:MndtryVlntryEvtTp> <mx:Cd>MAND</mx:Cd> </mx:MndtryVlntryEvtTp> <mx:UndrlygScty> <mx:SctyId> <mx:Id> <mx:ISIN>GB0033519546</mx:ISIN> </mx:Id> <mx:Desc>AVACTA GROUP PLC</mx:Desc> </mx:SctyId> </mx:UndrlygScty> </mx:CorpActnGnlInf> <mx:AcctDtls> <mx:ForAllAccts> <mx:IdCd>GENR</mx:IdCd> </mx:ForAllAccts> </mx:AcctDtls><mx:CorpActnNtfctn> <mx:Id> <mx:Id>Request001</mx:Id> </mx:Id> <mx:NtfctnGnlInf> <mx:NtfctnTp>NEWM</mx:NtfctnTp> <mx:PrcgSts> <mx:EvtSts><mx:EvtCmpltnsSts>COMP</mx:EvtCmpltnsSts> <mx:EvtConfSts>CONF</mx:EvtConfSts> </mx:EvtSts> </mx:PrcgSts> </mx:NtfctnGnlInf> <mx:CorpActnGnlInf><mx:CorpActnEvtId>Disclosure001</mx:CorpActnEvtId> <mx:EvtTp> <mx:Cd>DSCL</mx:Cd> </mx:EvtTp> <mx:MndtryVlntryEvtTp> <mx:Cd>MAND</mx:Cd> </mx:MndtryVlntryEvtTp> <mx:UndrlygScty> <mx:SctyId> <mx:Id> <mx:ISIN>GB0033519546</mx:ISIN> </mx:Id> <mx:Desc>AVACTA GROUP PLC</mx:Desc> </mx:SctyId> </mx:UndrlygScty> </mx:CorpActnGnlInf> <mx:AcctDtls> <mx:ForAllAccts> <mx:IdCd>GENR</mx:IdCd> </mx:ForAllAccts> </mx:AcctDtls><mx:CorpActnNtfctn> <mx:Id> <mx:Id>Request001</mx:Id> </mx:Id> <mx:NtfctnGnlInf> <mx:NtfctnTp>NEWM</mx:NtfctnTp> <mx:PrcgSts> <mx:EvtSts><mx:EvtCmpltnsSts>COMP</mx:EvtCmpltnsSts> <mx:EvtConfSts>CONF</mx:EvtConfSts> </mx:EvtSts> </mx:PrcgSts> </mx:NtfctnGnlInf> <mx:CorpActnGnlInf><mx:CorpActnEvtId>Disclosure001</mx:CorpActnEvtId> <mx:EvtTp> <mx:Cd>DSCL</mx:Cd> </mx:EvtTp> <mx:MndtryVlntryEvtTp> <mx:Cd>MAND</mx:Cd> </mx:MndtryVlntryEvtTp> <mx:UndrlygScty> <mx:SctyId> <mx:Id> <mx:ISIN>GB0033519546</mx:ISIN> </mx:Id> <mx:Desc>AVACTA GROUP PLC</mx:Desc> </mx:SctyId> </mx:UndrlygScty> </mx:CorpActnGnlInf> <mx:AcctDtls> <mx:ForAllAccts> <mx:IdCd>GENR</mx:IdCd> </mx:ForAllAccts> </mx:AcctDtls><mx:CorpActnNtfctn> <mx:Id> <mx:Id>Request001</mx:Id> </mx:Id> <mx:NtfctnGnlInf> <mx:NtfctnTp>NEWM</mx:NtfctnTp> <mx:PrcgSts> <mx:EvtSts><mx:EvtCmpltnsSts>COMP</mx:EvtCmpltnsSts> <mx:EvtConfSts>CONF</mx:EvtConfSts> </mx:EvtSts> </mx:PrcgSts> </mx:NtfctnGnlInf> <mx:CorpActnGnlInf><mx:CorpActnEvtId>Disclosure001</mx:CorpActnEvtId> <mx:EvtTp> <mx:Cd>DSCL</mx:Cd> </mx:EvtTp> <mx:MndtryVlntryEvtTp> <mx:Cd>MAND</mx:Cd> </mx:MndtryVlntryEvtTp> <mx:UndrlygScty> <mx:SctyId> <mx:Id> <mx:ISIN>GB0033519546</mx:ISIN> </mx:Id> <mx:Desc>AVACTA GROUP PLC</mx:Desc> </mx:SctyId> </mx:UndrlygScty> </mx:CorpActnGnlInf> <mx:AcctDtls> <mx:ForAllAccts> <mx:IdCd>GENR</mx:IdCd> </mx:ForAllAccts> </mx:AcctDtls>"]
+});
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "http://ec2-13-229-154-124.ap-southeast-1.compute.amazonaws.com:4001/channels/common/chaincodes/reference");
+xhr.setRequestHeader("authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MjY2NzE3NTEsInVzZXJuYW1lIjoidXNlcjEiLCJvcmdOYW1lIjoiYSIsImlhdCI6MTUyNjYzNTc1MX0.ov7ALlXBkBW3ZVzHvl5S_EodJxCOp_SAxg_nJzCQl3E");
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.setRequestHeader("postman-token", "2a2b28ba-e5bb-2152-c99e-0a27324b37ff");
+
+xhr.send(data);
+//},10);
+}
+var start = 1;
+var i =start;
+while(i<(start+1000)){
+callApiIssue(i);
+//console.log(i)
+i++;
+}
+console.log("done")
+</script>
+
+</html>
